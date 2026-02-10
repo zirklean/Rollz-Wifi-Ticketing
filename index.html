@@ -35,31 +35,39 @@
       background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
       color: var(--text-dark);
       min-height: 100vh;
-      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
       line-height: 1.4;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
     
-    /* Container optimized for mobile */
+    /* Main container taking full page */
     .container {
-      max-width: 100%;
-      margin: 0 auto;
+      width: 100%;
+      max-width: 420px;
+      height: 100vh;
+      max-height: 800px;
       background-color: white;
-      border-radius: 16px;
-      box-shadow: var(--card-shadow);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
       overflow: hidden;
-      padding: 0;
+      display: flex;
+      flex-direction: column;
+      position: relative;
     }
     
     /* Header optimized for mobile */
     .header {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       color: white;
-      padding: 20px 16px;
+      padding: 24px 20px;
       text-align: center;
       position: relative;
       overflow: hidden;
+      flex-shrink: 0;
     }
     
     .header::before {
@@ -79,15 +87,15 @@
     }
     
     h1 {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       position: relative;
       z-index: 1;
     }
     
     .subtitle {
-      font-size: 13px;
+      font-size: 14px;
       opacity: 0.9;
       font-weight: 400;
       position: relative;
@@ -101,17 +109,17 @@
       justify-content: center;
       gap: 8px;
       background: rgba(255,255,255,0.1);
-      padding: 8px 12px;
+      padding: 8px 16px;
       border-radius: 20px;
-      margin-top: 12px;
+      margin-top: 16px;
       position: relative;
       z-index: 1;
-      font-size: 12px;
+      font-size: 13px;
     }
     
     .connection-dot {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       background: #22c55e;
       border-radius: 50%;
       animation: pulse 2s infinite;
@@ -122,19 +130,29 @@
       50% { opacity: 0.5; }
     }
     
+    /* Main content area with scrolling */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+    }
+    
     /* Plans Section - Mobile Optimized */
     .plans-section {
-      padding: 20px 16px;
+      padding: 24px 20px;
+      flex: 1;
     }
     
     .section-title {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 600;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       color: var(--text-dark);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
     
     .section-title i {
@@ -145,14 +163,14 @@
     .plans-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 15px;
     }
     
     /* Plan cards optimized for touch with selection state */
     .plan-card {
       background: white;
-      border-radius: 14px;
-      padding: 16px;
+      border-radius: 16px;
+      padding: 18px;
       border: 1.5px solid var(--border-color);
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
@@ -161,7 +179,7 @@
       justify-content: space-between;
       position: relative;
       overflow: hidden;
-      min-height: 80px;
+      min-height: 85px;
     }
     
     /* Selection state with darker background */
@@ -181,7 +199,7 @@
       right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
-      border-radius: 14px 14px 0 0;
+      border-radius: 16px 16px 0 0;
     }
     
     .plan-card.selected::after {
@@ -189,17 +207,17 @@
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 20px;
-      height: 20px;
+      top: 12px;
+      right: 12px;
+      width: 22px;
+      height: 22px;
       background: var(--primary-color);
       color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
+      font-size: 11px;
       animation: checkIn 0.3s ease-out;
     }
     
@@ -224,15 +242,9 @@
       box-shadow: var(--hover-shadow);
     }
     
-    .plan-card.highlighted {
-      border: 2px solid var(--warning-color);
-      background: linear-gradient(to right, rgba(245, 158, 11, 0.03), rgba(245, 158, 11, 0.01));
-    }
-    
-    .plan-card.highlighted.selected {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 158, 11, 0.03));
-      border-color: var(--warning-color);
-      box-shadow: 0 0 0 2px var(--warning-color), 0 4px 12px rgba(245, 158, 11, 0.1);
+    .plan-card.selected .plan-name {
+      color: var(--primary-dark);
+      font-weight: 700;
     }
     
     /* Plan details without icon */
@@ -242,10 +254,10 @@
     }
     
     .plan-name {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 600;
       color: var(--text-dark);
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       transition: color 0.2s ease;
     }
     
@@ -255,9 +267,9 @@
     }
     
     .plan-description {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-light);
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       transition: color 0.2s ease;
     }
     
@@ -269,27 +281,32 @@
       display: inline-block;
       background-color: var(--accent-color);
       color: white;
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 8px;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 10px;
       font-weight: 600;
-      margin-top: 4px;
+      margin-top: 6px;
     }
     
     .plan-card.selected .plan-badge {
       background-color: var(--primary-dark);
     }
     
-    .plan-card.highlighted .plan-badge {
+    /* Plan 3 badge uses warning color for visual distinction */
+    .plan-card[data-amount="120"] .plan-badge {
       background-color: var(--warning-color);
     }
     
+    .plan-card.selected[data-amount="120"] .plan-badge {
+      background-color: var(--primary-dark);
+    }
+    
     .plan-price {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 700;
       color: var(--primary-dark);
       text-align: right;
-      min-width: 80px;
+      min-width: 85px;
       transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
@@ -302,32 +319,35 @@
     }
     
     .plan-duration {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-light);
       font-weight: 500;
-      margin-top: 2px;
+      margin-top: 3px;
     }
     
-    /* Action Buttons - Larger touch targets */
+    /* Action Buttons - Fixed at bottom */
     .action-buttons {
-      padding: 20px 16px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 15px;
+      background: white;
+      border-top: 1px solid var(--border-color);
+      flex-shrink: 0;
     }
     
     .btn-primary, .btn-secondary {
       border: none;
-      padding: 16px;
-      border-radius: 12px;
+      padding: 18px;
+      border-radius: 14px;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       transition: all 0.2s ease;
-      min-height: 52px;
+      min-height: 56px;
       cursor: pointer;
       width: 100%;
     }
@@ -335,12 +355,12 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       color: white;
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
     }
     
     .btn-primary:active {
       transform: translateY(2px);
-      box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
     }
     
     .btn-secondary {
@@ -356,12 +376,13 @@
     
     /* Footer */
     .footer {
-      padding: 16px;
+      padding: 16px 20px;
       text-align: center;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-light);
       border-top: 1px solid var(--border-color);
       background-color: var(--secondary-color);
+      flex-shrink: 0;
     }
     
     .footer a {
@@ -370,25 +391,19 @@
       font-weight: 500;
     }
     
-    /* Modal optimizations for mobile */
-    .modal-dialog {
-      margin: 12px;
-      max-height: calc(100vh - 24px);
-      overflow-y: auto;
-    }
-    
+    /* Modal optimizations for mobile - Now inside container */
     .modal-content {
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
       border: none;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
     }
     
     .modal-header {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       color: white;
       border-bottom: none;
-      padding: 18px 20px;
+      padding: 22px 24px;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -396,11 +411,11 @@
     
     .modal-title {
       font-weight: 600;
-      font-size: 17px;
+      font-size: 18px;
     }
     
     .modal-body {
-      padding: 20px;
+      padding: 24px;
       max-height: 60vh;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
@@ -408,12 +423,12 @@
     
     /* Form controls optimized for mobile */
     .form-control {
-      padding: 14px 16px;
-      border-radius: 10px;
+      padding: 15px 18px;
+      border-radius: 12px;
       border: 1.5px solid var(--border-color);
-      font-size: 15px;
+      font-size: 16px;
       transition: all 0.2s ease;
-      min-height: 48px;
+      min-height: 52px;
     }
     
     .form-control:focus {
@@ -424,7 +439,7 @@
     
     /* Better input groups for mobile */
     .input-group {
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
       border: 1.5px solid var(--border-color);
     }
@@ -437,48 +452,48 @@
     .input-group .btn {
       background: var(--secondary-color);
       border: none;
-      min-width: 50px;
+      min-width: 55px;
     }
     
     /* Responsive tables */
     .table-responsive {
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--border-color);
     }
     
     .table {
-      font-size: 12px;
+      font-size: 13px;
       margin: 0;
       width: 100%;
     }
     
     .table th {
       font-weight: 600;
-      padding: 12px 10px;
+      padding: 14px 12px;
       background: var(--secondary-color);
       white-space: nowrap;
     }
     
     .table td {
-      padding: 12px 10px;
+      padding: 14px 12px;
       vertical-align: middle;
     }
     
     /* Status badges */
     .badge {
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 6px;
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 8px;
       font-weight: 600;
     }
     
     /* Small buttons in tables */
     .btn-sm {
-      padding: 6px 12px;
-      font-size: 11px;
-      border-radius: 8px;
-      min-height: 32px;
+      padding: 7px 14px;
+      font-size: 12px;
+      border-radius: 10px;
+      min-height: 36px;
     }
     
     /* Loading animations */
@@ -490,12 +505,12 @@
     .btn-loading::after {
       content: '';
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       top: 50%;
       left: 50%;
-      margin-left: -10px;
-      margin-top: -10px;
+      margin-left: -11px;
+      margin-top: -11px;
       border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       border-top-color: white;
@@ -509,62 +524,66 @@
     /* Mobile-specific optimizations */
     @media (max-width: 576px) {
       body {
-        padding: 8px;
-        background: var(--secondary-color);
+        padding: 0;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       }
       
       .container {
-        border-radius: 14px;
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
       }
       
       .header {
-        padding: 18px 14px;
+        padding: 22px 18px;
       }
       
       h1 {
-        font-size: 18px;
+        font-size: 20px;
       }
       
       .plans-section {
-        padding: 18px 14px;
+        padding: 22px 18px;
       }
       
       .plan-card {
-        padding: 14px;
+        padding: 16px;
       }
       
       .plan-name {
-        font-size: 15px;
+        font-size: 16px;
       }
       
       .plan-price {
-        font-size: 20px;
-        min-width: 70px;
+        font-size: 22px;
+        min-width: 75px;
       }
       
       .action-buttons {
-        padding: 18px 14px;
-      }
-      
-      .modal-dialog {
-        margin: 8px;
+        padding: 18px;
       }
       
       /* Larger touch targets for very small screens */
       .btn-primary, .btn-secondary {
-        min-height: 56px;
-        padding: 18px;
+        min-height: 58px;
+        padding: 20px;
       }
       
       .form-control {
-        min-height: 52px;
+        min-height: 55px;
+      }
+      
+      .modal-dialog {
+        margin: 16px;
       }
     }
     
     /* Landscape orientation support */
     @media (max-height: 500px) and (orientation: landscape) {
       .container {
-        max-width: 600px;
+        max-width: 800px;
+        max-height: 90vh;
       }
       
       .plans-grid {
@@ -572,11 +591,11 @@
       }
       
       .plan-card {
-        min-height: 90px;
+        min-height: 95px;
       }
       
       .modal-body {
-        max-height: 40vh;
+        max-height: 50vh;
       }
     }
     
@@ -591,7 +610,7 @@
       }
       
       body {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        background: linear-gradient(135deg, var(--primary-dark), #4338ca);
       }
       
       .container {
@@ -607,6 +626,10 @@
       }
       
       .btn-secondary {
+        background-color: #1e293b;
+      }
+      
+      .action-buttons {
         background-color: #1e293b;
       }
       
@@ -627,16 +650,21 @@
     
     /* Scrollbar styling */
     ::-webkit-scrollbar {
-      width: 4px;
+      width: 6px;
     }
     
     ::-webkit-scrollbar-track {
       background: var(--secondary-color);
+      border-radius: 3px;
     }
     
     ::-webkit-scrollbar-thumb {
       background: var(--primary-color);
-      border-radius: 2px;
+      border-radius: 3px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
     }
   </style>
   
@@ -647,6 +675,7 @@
   <script src="https://klcis-gen.pages.dev/forced_browser.js"></script>
 </head>
 <body>
+  <!-- Main Container -->
   <div class="container">
     <!-- Header -->
     <div class="header">
@@ -657,68 +686,77 @@
         <span>Ready to Connect</span>
       </div>
     </div>
+    
+    <!-- Main Content Area -->
+    <div class="content">
+      <!-- Plans -->
+      <div class="plans-section">
+        <h2 class="section-title">
+          <i class="fas fa-wifi"></i>
+          Choose Your Plan
+        </h2>
         
-    <!-- Plans -->
-    <div class="plans-section">
-      <h2 class="section-title">
-        <i class="fas fa-wifi"></i>
-        Choose Your Plan
-      </h2>
-      
-      <div class="plans-grid">
-        <!-- Plan 1 -->
-        <div class="plan-card selected" data-amount="10">
-          <div class="plan-details">
-            <div class="plan-name">12 Hours</div>
-            <div class="plan-description">Unlimited high-speed internet</div>
-            <span class="plan-badge">Popular</span>
+        <div class="plans-grid">
+          <!-- Plan 1 -->
+          <div class="plan-card selected" data-amount="10">
+            <div class="plan-details">
+              <div class="plan-name">12 Hours</div>
+              <div class="plan-description">Unlimited high-speed internet</div>
+              <span class="plan-badge">Popular</span>
+            </div>
+            <div class="plan-price">
+              ₱10
+              <span class="plan-duration">12H</span>
+            </div>
           </div>
-          <div class="plan-price">
-            ₱10
-            <span class="plan-duration">12H</span>
+          
+          <!-- Plan 2 -->
+          <div class="plan-card" data-amount="20">
+            <div class="plan-details">
+              <div class="plan-name">24 Hours</div>
+              <div class="plan-description">Full day access</div>
+            </div>
+            <div class="plan-price">
+              ₱20
+              <span class="plan-duration">24H</span>
+            </div>
           </div>
-        </div>
-        
-        <!-- Plan 2 -->
-        <div class="plan-card" data-amount="20">
-          <div class="plan-details">
-            <div class="plan-name">24 Hours</div>
-            <div class="plan-description">Full day access</div>
+          
+          <!-- Plan 3 -->
+          <div class="plan-card" data-amount="120">
+            <div class="plan-details">
+              <div class="plan-name">7 Days</div>
+              <div class="plan-description">Weekly unlimited access</div>
+              <span class="plan-badge">Best Value</span>
+            </div>
+            <div class="plan-price">
+              ₱120
+              <span class="plan-duration">7D</span>
+            </div>
           </div>
-          <div class="plan-price">
-            ₱20
-            <span class="plan-duration">24H</span>
-          </div>
-        </div>
-        
-        <!-- Plan 3 -->
-        <div class="plan-card highlighted" data-amount="120">
-          <div class="plan-details">
-            <div class="plan-name">7 Days</div>
-            <div class="plan-description">Weekly unlimited access</div>
-            <span class="plan-badge">Best Value</span>
-          </div>
-          <div class="plan-price">
-            ₱120
-            <span class="plan-duration">7D</span>
-          </div>
-        </div>
-        
-        <!-- Plan 4 -->
-        <div class="plan-card" data-amount="200">
-          <div class="plan-details">
-            <div class="plan-name">15 Days</div>
-            <div class="plan-description">Extended access</div>
-          </div>
-          <div class="plan-price">
-            ₱200
-            <span class="plan-duration">15D</span>
+          
+          <!-- Plan 4 -->
+          <div class="plan-card" data-amount="200">
+            <div class="plan-details">
+              <div class="plan-name">15 Days</div>
+              <div class="plan-description">Extended access</div>
+            </div>
+            <div class="plan-price">
+              ₱200
+              <span class="plan-duration">15D</span>
+            </div>
           </div>
         </div>
       </div>
+      
+      <!-- Footer inside container -->
+      <div class="footer">
+        <p>Need help? <a href="https://s2.klinternetservices.com/client" target="_blank">Contact Support</a></p>
+        <p class="mt-1">Secure payment via GCash & Maya</p>
+      </div>
     </div>
     
-    <!-- Action Buttons -->
+    <!-- Action Buttons (Fixed at bottom inside container) -->
     <div class="action-buttons">
       <button type="button" class="btn-primary" id="proceedToPayment">
         <i class="fas fa-credit-card"></i>
@@ -730,15 +768,9 @@
         View Previous Transactions
       </button>
     </div>
-    
-    <!-- Footer -->
-    <div class="footer">
-      <p>Need help? <a href="https://s2.klinternetservices.com/client" target="_blank">Contact Support</a></p>
-      <p class="mt-1">Secure payment via GCash & Maya</p>
-    </div>
   </div>
 
-  <!-- Transactions Modal -->
+  <!-- Transactions Modal (This stays outside container) -->
   <div class="modal fade" id="transactions" tabindex="-1" aria-labelledby="transactionsLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -824,7 +856,7 @@
     </div>
   </div>
   
-  <!-- Mobile Number Modal -->
+  <!-- Mobile Number Modal (This stays outside container) -->
   <div class="modal fade" id="mobileNumberModal" tabindex="-1" aria-labelledby="mobileNumberModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -834,7 +866,7 @@
         </div>
         <div class="modal-body">
           <div class="text-center mb-4">
-            <div style="width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 15px;">
+            <div style="width: 60px; height: 60px; border-radius: 16px; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 20px;">
               <i class="fas fa-mobile-alt"></i>
             </div>
             <p>Enter your mobile number to receive payment request</p>
