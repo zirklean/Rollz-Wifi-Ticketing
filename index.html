@@ -158,6 +158,7 @@
       cursor: pointer;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       position: relative;
       overflow: hidden;
       min-height: 80px;
@@ -234,40 +235,17 @@
       box-shadow: 0 0 0 2px var(--warning-color), 0 4px 12px rgba(245, 158, 11, 0.1);
     }
     
-    /* Plan icon optimized for mobile */
-    .plan-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      margin-right: 12px;
-      flex-shrink: 0;
-      transition: all 0.2s ease;
-    }
-    
-    .plan-card.selected .plan-icon {
-      background: linear-gradient(135deg, var(--primary-dark), #4338ca);
-      transform: scale(1.05);
-    }
-    
+    /* Plan details without icon */
     .plan-details {
       flex: 1;
-      min-width: 0; /* Prevents flex item overflow */
+      min-width: 0;
     }
     
     .plan-name {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--text-dark);
-      margin-bottom: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      margin-bottom: 4px;
       transition: color 0.2s ease;
     }
     
@@ -277,7 +255,7 @@
     }
     
     .plan-description {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-light);
       margin-bottom: 4px;
       transition: color 0.2s ease;
@@ -291,29 +269,43 @@
       display: inline-block;
       background-color: var(--accent-color);
       color: white;
-      font-size: 10px;
-      padding: 2px 6px;
+      font-size: 11px;
+      padding: 3px 8px;
       border-radius: 8px;
       font-weight: 600;
+      margin-top: 4px;
     }
     
     .plan-card.selected .plan-badge {
       background-color: var(--primary-dark);
     }
     
+    .plan-card.highlighted .plan-badge {
+      background-color: var(--warning-color);
+    }
+    
     .plan-price {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--primary-dark);
       text-align: right;
-      min-width: 70px;
-      flex-shrink: 0;
+      min-width: 80px;
       transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
     }
     
     .plan-card.selected .plan-price {
       color: var(--primary-dark);
       transform: scale(1.05);
+    }
+    
+    .plan-duration {
+      font-size: 12px;
+      color: var(--text-light);
+      font-weight: 500;
+      margin-top: 2px;
     }
     
     /* Action Buttons - Larger touch targets */
@@ -541,6 +533,15 @@
         padding: 14px;
       }
       
+      .plan-name {
+        font-size: 15px;
+      }
+      
+      .plan-price {
+        font-size: 20px;
+        min-width: 70px;
+      }
+      
       .action-buttons {
         padding: 18px 14px;
       }
@@ -667,52 +668,52 @@
       <div class="plans-grid">
         <!-- Plan 1 -->
         <div class="plan-card selected" data-amount="10">
-          <div class="plan-icon">
-            <i class="fas fa-clock"></i>
-          </div>
           <div class="plan-details">
             <div class="plan-name">12 Hours</div>
             <div class="plan-description">Unlimited high-speed internet</div>
             <span class="plan-badge">Popular</span>
           </div>
-          <div class="plan-price">₱10</div>
+          <div class="plan-price">
+            ₱10
+            <span class="plan-duration">12H</span>
+          </div>
         </div>
         
         <!-- Plan 2 -->
         <div class="plan-card" data-amount="20">
-          <div class="plan-icon">
-            <i class="fas fa-sun"></i>
-          </div>
           <div class="plan-details">
             <div class="plan-name">24 Hours</div>
             <div class="plan-description">Full day access</div>
           </div>
-          <div class="plan-price">₱20</div>
+          <div class="plan-price">
+            ₱20
+            <span class="plan-duration">24H</span>
+          </div>
         </div>
         
         <!-- Plan 3 -->
         <div class="plan-card highlighted" data-amount="120">
-          <div class="plan-icon">
-            <i class="fas fa-calendar-week"></i>
-          </div>
           <div class="plan-details">
             <div class="plan-name">7 Days</div>
             <div class="plan-description">Weekly unlimited access</div>
             <span class="plan-badge">Best Value</span>
           </div>
-          <div class="plan-price">₱120</div>
+          <div class="plan-price">
+            ₱120
+            <span class="plan-duration">7D</span>
+          </div>
         </div>
         
         <!-- Plan 4 -->
         <div class="plan-card" data-amount="200">
-          <div class="plan-icon">
-            <i class="fas fa-calendar-alt"></i>
-          </div>
           <div class="plan-details">
             <div class="plan-name">15 Days</div>
             <div class="plan-description">Extended access</div>
           </div>
-          <div class="plan-price">₱200</div>
+          <div class="plan-price">
+            ₱200
+            <span class="plan-duration">15D</span>
+          </div>
         </div>
       </div>
     </div>
@@ -833,7 +834,7 @@
         </div>
         <div class="modal-body">
           <div class="text-center mb-4">
-            <div class="plan-icon mx-auto mb-3">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 15px;">
               <i class="fas fa-mobile-alt"></i>
             </div>
             <p>Enter your mobile number to receive payment request</p>
