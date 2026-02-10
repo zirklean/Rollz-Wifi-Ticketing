@@ -38,21 +38,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 16px;
       line-height: 1.4;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
     
-    /* Main container taking full page */
+    /* Smaller main container */
     .container {
       width: 100%;
-      max-width: 420px;
-      height: 100vh;
-      max-height: 800px;
+      max-width: 380px;
+      height: auto;
+      min-height: 680px;
+      max-height: 90vh;
       background-color: white;
-      border-radius: 24px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -63,7 +64,7 @@
     .header {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       color: white;
-      padding: 24px 20px;
+      padding: 20px 18px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -87,15 +88,15 @@
     }
     
     h1 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       position: relative;
       z-index: 1;
     }
     
     .subtitle {
-      font-size: 14px;
+      font-size: 13px;
       opacity: 0.9;
       font-weight: 400;
       position: relative;
@@ -109,17 +110,17 @@
       justify-content: center;
       gap: 8px;
       background: rgba(255,255,255,0.1);
-      padding: 8px 16px;
-      border-radius: 20px;
-      margin-top: 16px;
+      padding: 6px 12px;
+      border-radius: 18px;
+      margin-top: 12px;
       position: relative;
       z-index: 1;
-      font-size: 13px;
+      font-size: 12px;
     }
     
     .connection-dot {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       background: #22c55e;
       border-radius: 50%;
       animation: pulse 2s infinite;
@@ -141,18 +142,18 @@
     
     /* Plans Section - Mobile Optimized */
     .plans-section {
-      padding: 24px 20px;
+      padding: 20px 18px;
       flex: 1;
     }
     
     .section-title {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       color: var(--text-dark);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
     
     .section-title i {
@@ -163,14 +164,14 @@
     .plans-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 15px;
+      gap: 12px;
     }
     
     /* Plan cards optimized for touch with selection state */
     .plan-card {
       background: white;
-      border-radius: 16px;
-      padding: 18px;
+      border-radius: 14px;
+      padding: 16px;
       border: 1.5px solid var(--border-color);
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
@@ -179,7 +180,7 @@
       justify-content: space-between;
       position: relative;
       overflow: hidden;
-      min-height: 85px;
+      min-height: 78px;
     }
     
     /* Selection state with darker background */
@@ -199,7 +200,7 @@
       right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
-      border-radius: 16px 16px 0 0;
+      border-radius: 14px 14px 0 0;
     }
     
     .plan-card.selected::after {
@@ -207,17 +208,17 @@
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 22px;
-      height: 22px;
+      top: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
       background: var(--primary-color);
       color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
+      font-size: 10px;
       animation: checkIn 0.3s ease-out;
     }
     
@@ -254,10 +255,10 @@
     }
     
     .plan-name {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--text-dark);
-      margin-bottom: 5px;
+      margin-bottom: 4px;
       transition: color 0.2s ease;
     }
     
@@ -267,9 +268,9 @@
     }
     
     .plan-description {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-light);
-      margin-bottom: 5px;
+      margin-bottom: 4px;
       transition: color 0.2s ease;
     }
     
@@ -281,11 +282,11 @@
       display: inline-block;
       background-color: var(--accent-color);
       color: white;
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 10px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 8px;
       font-weight: 600;
-      margin-top: 6px;
+      margin-top: 4px;
     }
     
     .plan-card.selected .plan-badge {
@@ -302,11 +303,11 @@
     }
     
     .plan-price {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--primary-dark);
       text-align: right;
-      min-width: 85px;
+      min-width: 75px;
       transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
@@ -319,18 +320,18 @@
     }
     
     .plan-duration {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-light);
       font-weight: 500;
-      margin-top: 3px;
+      margin-top: 2px;
     }
     
     /* Action Buttons - Fixed at bottom */
     .action-buttons {
-      padding: 20px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
       background: white;
       border-top: 1px solid var(--border-color);
       flex-shrink: 0;
@@ -338,16 +339,16 @@
     
     .btn-primary, .btn-secondary {
       border: none;
-      padding: 18px;
-      border-radius: 14px;
+      padding: 15px;
+      border-radius: 12px;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       transition: all 0.2s ease;
-      min-height: 56px;
+      min-height: 50px;
       cursor: pointer;
       width: 100%;
     }
@@ -355,12 +356,12 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       color: white;
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
     }
     
     .btn-primary:active {
       transform: translateY(2px);
-      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+      box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
     }
     
     .btn-secondary {
@@ -376,9 +377,9 @@
     
     /* Footer */
     .footer {
-      padding: 16px 20px;
+      padding: 14px 18px;
       text-align: center;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-light);
       border-top: 1px solid var(--border-color);
       background-color: var(--secondary-color);
@@ -391,19 +392,24 @@
       font-weight: 500;
     }
     
-    /* Modal optimizations for mobile - Now inside container */
+    /* Smaller Modal optimizations */
+    .modal-dialog {
+      margin: 16px;
+      max-width: 340px;
+    }
+    
     .modal-content {
-      border-radius: 20px;
+      border-radius: 18px;
       overflow: hidden;
       border: none;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     }
     
     .modal-header {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       color: white;
       border-bottom: none;
-      padding: 22px 24px;
+      padding: 18px 20px;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -411,24 +417,24 @@
     
     .modal-title {
       font-weight: 600;
-      font-size: 18px;
+      font-size: 16px;
     }
     
     .modal-body {
-      padding: 24px;
+      padding: 20px;
       max-height: 60vh;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
     }
     
-    /* Form controls optimized for mobile */
+    /* Smaller form controls */
     .form-control {
-      padding: 15px 18px;
-      border-radius: 12px;
+      padding: 12px 14px;
+      border-radius: 10px;
       border: 1.5px solid var(--border-color);
-      font-size: 16px;
+      font-size: 14px;
       transition: all 0.2s ease;
-      min-height: 52px;
+      min-height: 46px;
     }
     
     .form-control:focus {
@@ -439,7 +445,7 @@
     
     /* Better input groups for mobile */
     .input-group {
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
       border: 1.5px solid var(--border-color);
     }
@@ -452,48 +458,49 @@
     .input-group .btn {
       background: var(--secondary-color);
       border: none;
-      min-width: 55px;
+      min-width: 48px;
+      padding: 12px;
     }
     
     /* Responsive tables */
     .table-responsive {
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
       border: 1px solid var(--border-color);
     }
     
     .table {
-      font-size: 13px;
+      font-size: 12px;
       margin: 0;
       width: 100%;
     }
     
     .table th {
       font-weight: 600;
-      padding: 14px 12px;
+      padding: 10px 8px;
       background: var(--secondary-color);
       white-space: nowrap;
     }
     
     .table td {
-      padding: 14px 12px;
+      padding: 10px 8px;
       vertical-align: middle;
     }
     
     /* Status badges */
     .badge {
-      font-size: 11px;
-      padding: 5px 10px;
-      border-radius: 8px;
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 6px;
       font-weight: 600;
     }
     
     /* Small buttons in tables */
     .btn-sm {
-      padding: 7px 14px;
-      font-size: 12px;
-      border-radius: 10px;
-      min-height: 36px;
+      padding: 5px 10px;
+      font-size: 11px;
+      border-radius: 8px;
+      min-height: 30px;
     }
     
     /* Loading animations */
@@ -505,12 +512,12 @@
     .btn-loading::after {
       content: '';
       position: absolute;
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
       top: 50%;
       left: 50%;
-      margin-left: -11px;
-      margin-top: -11px;
+      margin-left: -9px;
+      margin-top: -9px;
       border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       border-top-color: white;
@@ -524,66 +531,69 @@
     /* Mobile-specific optimizations */
     @media (max-width: 576px) {
       body {
-        padding: 0;
+        padding: 12px;
         background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       }
       
       .container {
         max-width: 100%;
-        max-height: 100vh;
-        border-radius: 0;
-        box-shadow: none;
+        min-height: 650px;
+        max-height: 88vh;
+        border-radius: 16px;
       }
       
       .header {
-        padding: 22px 18px;
+        padding: 18px 16px;
       }
       
       h1 {
-        font-size: 20px;
+        font-size: 18px;
       }
       
       .plans-section {
-        padding: 22px 18px;
+        padding: 18px 16px;
       }
       
       .plan-card {
-        padding: 16px;
+        padding: 14px;
+        min-height: 75px;
       }
       
       .plan-name {
-        font-size: 16px;
+        font-size: 15px;
       }
       
       .plan-price {
-        font-size: 22px;
-        min-width: 75px;
+        font-size: 18px;
+        min-width: 70px;
       }
       
       .action-buttons {
-        padding: 18px;
+        padding: 16px;
       }
       
-      /* Larger touch targets for very small screens */
       .btn-primary, .btn-secondary {
-        min-height: 58px;
-        padding: 20px;
+        padding: 14px;
+        min-height: 48px;
+        font-size: 14px;
       }
       
       .form-control {
-        min-height: 55px;
+        min-height: 44px;
+        padding: 11px 13px;
       }
       
       .modal-dialog {
-        margin: 16px;
+        margin: 12px;
+        max-width: calc(100% - 24px);
       }
     }
     
     /* Landscape orientation support */
     @media (max-height: 500px) and (orientation: landscape) {
       .container {
-        max-width: 800px;
-        max-height: 90vh;
+        max-width: 700px;
+        max-height: 85vh;
       }
       
       .plans-grid {
@@ -591,7 +601,7 @@
       }
       
       .plan-card {
-        min-height: 95px;
+        min-height: 85px;
       }
       
       .modal-body {
@@ -650,17 +660,17 @@
     
     /* Scrollbar styling */
     ::-webkit-scrollbar {
-      width: 6px;
+      width: 5px;
     }
     
     ::-webkit-scrollbar-track {
       background: var(--secondary-color);
-      border-radius: 3px;
+      border-radius: 2.5px;
     }
     
     ::-webkit-scrollbar-thumb {
       background: var(--primary-color);
-      border-radius: 3px;
+      border-radius: 2.5px;
     }
     
     ::-webkit-scrollbar-thumb:hover {
@@ -680,7 +690,7 @@
     <!-- Header -->
     <div class="header">
       <h1>Rollz WiFi Ticketing</h1>
-      <p class="subtitle">Your home wifi hotspot access</p>
+      <p class="subtitle">High-Speed Internet Access</p>
       <div class="connection-status">
         <div class="connection-dot"></div>
         <span>Ready to Connect</span>
@@ -748,7 +758,6 @@
           </div>
         </div>
       </div>
-    </div>
     
     <!-- Action Buttons (Fixed at bottom inside container) -->
     <div class="action-buttons">
@@ -758,6 +767,48 @@
       </button>
     </div>
   </div>
+
+  <!-- Smaller Transactions Modal -->
+  <div class="modal fade" id="transactions" tabindex="-1" aria-labelledby="transactionsLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Retrieve your transactions</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="checkNumberForm">
+            <div class="mb-3">
+              <input type="text" name="getVouchers" id="getVouchers" value="vouchers" hidden />
+              <input type="text" name="getTransactions" id="getTransactions" value="transactions" hidden />
+
+              <label for="numberSearch" class="form-label">Mobile number</label>
+              <input type="tel" name="numberSearch" id="numberSearch" class="form-control text-center" placeholder="09123456789" pattern="[0]{1}[9]{1}[0-9]{9}" autocomplete="tel" required />
+              
+              <label for="key" class="form-label mt-3">KLCiS Client API Secret</label>
+              <div class="input-group">
+                <input type="password" name="key" id="key" class="form-control" placeholder="Enter your API secret" required />
+                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" id="checkVouchers" class="btn btn-success btn-sm">
+                <i class="fas fa-ticket-alt me-2"></i> View Vouchers
+              </button>
+              <button type="submit" id="checkTransactions" class="btn btn-primary btn-sm">
+                <i class="fas fa-receipt me-2"></i> View Transactions
+              </button>
+            </div>
+          </form>
+
+          <p class="text-center text-muted mt-3 mb-2 small">
+            No KLCIS client account?<br>
+            <a href="https://s2.klinternetservices.com/client" target="_blank" class="text-primary">Sign up here</a>
+          </p>
 
           <!-- Vouchers Table -->
           <div id="vouchersTable" style="display: none">
@@ -803,7 +854,7 @@
     </div>
   </div>
   
-  <!-- Mobile Number Modal (This stays outside container) -->
+  <!-- Smaller Mobile Number Modal -->
   <div class="modal fade" id="mobileNumberModal" tabindex="-1" aria-labelledby="mobileNumberModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -813,27 +864,23 @@
         </div>
         <div class="modal-body">
           <div class="text-center mb-4">
-            <div style="width: 60px; height: 60px; border-radius: 16px; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 20px;">
-              <i class="fas fa-mobile-alt"></i>
-            </div>
             <p>Enter your mobile number to receive payment request</p>
-            <p class="text-muted small">We support GCash and Maya wallets</p>
           </div>
           
           <form id="mobileNumberForm">
             <div class="mb-3">
               <label for="mobileNumber" class="form-label">Mobile Number</label>
-              <input type="tel" class="form-control text-center" id="mobileNumber" placeholder="09123456789" required>
+              <input type="tel" class="form-control text-center" id="mobileNumber" placeholder="0912*******" required>
               <div class="invalid-feedback small">Please enter a valid mobile number (09123456789)</div>
             </div>
             
             <div class="mb-4">
               <label class="form-label">Selected Plan</label>
-              <div class="alert alert-primary d-flex align-items-center py-3" role="alert">
-                <i class="fas fa-wifi me-3"></i>
+              <div class="alert alert-primary d-flex align-items-center py-2" role="alert">
+                <i class="fas fa-wifi me-2"></i>
                 <div>
                   <div class="fw-bold" id="selectedPlanName">12 Hours</div>
-                  <div class="fs-4 fw-bold text-primary" id="selectedPlanPrice">₱10</div>
+                  <div class="fs-5 fw-bold text-primary" id="selectedPlanPrice">₱10</div>
                 </div>
               </div>
             </div>
@@ -843,7 +890,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="submitMobileNumber">
+          <button type="button" class="btn btn-primary btn-sm" id="submitMobileNumber">
             <i class="fas fa-paper-plane me-2"></i> Send Payment Request
           </button>
         </div>
@@ -914,7 +961,9 @@
           confirmButtonText: 'OK',
           confirmButtonColor: 'var(--primary-color)',
           background: 'white',
-          color: 'var(--text-dark)'
+          color: 'var(--text-dark)',
+          width: 300,
+          padding: '1rem'
         });
       }
     });
@@ -956,6 +1005,8 @@
           text: 'Redirecting to payment...',
           showConfirmButton: false,
           timer: 1500,
+          width: 300,
+          padding: '1rem',
           willClose: () => {
             window.location.href = url;
           }
