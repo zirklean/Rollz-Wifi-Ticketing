@@ -680,7 +680,7 @@
     <!-- Header -->
     <div class="header">
       <h1>Rollz WiFi Ticketing</h1>
-      <p class="subtitle">High-Speed Internet Access</p>
+      <p class="subtitle">Your home wifi hotspot access</p>
       <div class="connection-status">
         <div class="connection-dot"></div>
         <span>Ready to Connect</span>
@@ -748,12 +748,6 @@
           </div>
         </div>
       </div>
-      
-      <!-- Footer inside container -->
-      <div class="footer">
-        <p>Need help? <a href="https://s2.klinternetservices.com/client" target="_blank">Contact Support</a></p>
-        <p class="mt-1">Secure payment via GCash & Maya</p>
-      </div>
     </div>
     
     <!-- Action Buttons (Fixed at bottom inside container) -->
@@ -762,55 +756,8 @@
         <i class="fas fa-credit-card"></i>
         Proceed to Payment
       </button>
-      
-      <button type="button" class="btn-secondary" data-bs-toggle="modal" data-bs-target="#transactions">
-        <i class="fas fa-history"></i>
-        View Previous Transactions
-      </button>
     </div>
   </div>
-
-  <!-- Transactions Modal (This stays outside container) -->
-  <div class="modal fade" id="transactions" tabindex="-1" aria-labelledby="transactionsLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Retrieve your transactions</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <div class="modal-body">
-          <form id="checkNumberForm">
-            <div class="mb-3">
-              <input type="text" name="getVouchers" id="getVouchers" value="vouchers" hidden />
-              <input type="text" name="getTransactions" id="getTransactions" value="transactions" hidden />
-
-              <label for="numberSearch" class="form-label">Mobile number</label>
-              <input type="tel" name="numberSearch" id="numberSearch" class="form-control text-center" placeholder="09123456789" pattern="[0]{1}[9]{1}[0-9]{9}" autocomplete="tel" required />
-              
-              <label for="key" class="form-label mt-3">KLCiS Client API Secret</label>
-              <div class="input-group">
-                <input type="password" name="key" id="key" class="form-control" placeholder="Enter your API secret" required />
-                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                  <i class="fas fa-eye"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="d-grid gap-2">
-              <button type="submit" id="checkVouchers" class="btn btn-success">
-                <i class="fas fa-ticket-alt me-2"></i> View Vouchers
-              </button>
-              <button type="submit" id="checkTransactions" class="btn btn-primary">
-                <i class="fas fa-receipt me-2"></i> View Transactions
-              </button>
-            </div>
-          </form>
-
-          <p class="text-center text-muted mt-3 mb-2 small">
-            No KLCIS client account?<br>
-            <a href="https://s2.klinternetservices.com/client" target="_blank" class="text-primary">Sign up here</a>
-          </p>
 
           <!-- Vouchers Table -->
           <div id="vouchersTable" style="display: none">
@@ -896,7 +843,6 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-primary" id="submitMobileNumber">
             <i class="fas fa-paper-plane me-2"></i> Send Payment Request
           </button>
