@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rollz WiFi Ticketing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Rollz WiFi</title>
   <link href="https://klcis-gen.pages.dev/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,43 +13,48 @@
       --primary-dark: #4f46e5;
       --secondary-color: #f8fafc;
       --accent-color: #10b981;
+      --warning-color: #f59e0b;
       --text-dark: #1e293b;
       --text-light: #64748b;
       --border-color: #e2e8f0;
-      --card-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.04), 0 8px 8px -5px rgba(0, 0, 0, 0.01);
-      --hover-shadow: 0 15px 30px -8px rgba(99, 102, 241, 0.15);
+      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --hover-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
     }
     
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
     
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
       color: var(--text-dark);
       min-height: 100vh;
-      padding: 15px;
-      line-height: 1.5;
+      padding: 12px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     
+    /* Container optimized for mobile */
     .container {
-      max-width: 420px;
+      max-width: 100%;
       margin: 0 auto;
       background-color: white;
-      border-radius: 18px;
+      border-radius: 16px;
       box-shadow: var(--card-shadow);
       overflow: hidden;
       padding: 0;
     }
     
-    /* Header Styles */
+    /* Header optimized for mobile */
     .header {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       color: white;
-      padding: 20px 18px;
+      padding: 20px 16px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -58,37 +63,72 @@
     .header::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-      background-size: 18px 18px;
-      opacity: 0.1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+      animation: shimmer 3s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
     
     h1 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       margin-bottom: 4px;
-      letter-spacing: -0.3px;
+      position: relative;
+      z-index: 1;
     }
     
     .subtitle {
       font-size: 13px;
       opacity: 0.9;
       font-weight: 400;
+      position: relative;
+      z-index: 1;
     }
     
-    /* Plans Section */
+    /* Connection indicator */
+    .connection-status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      padding: 8px 12px;
+      border-radius: 20px;
+      margin-top: 12px;
+      position: relative;
+      z-index: 1;
+      font-size: 12px;
+    }
+    
+    .connection-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    /* Plans Section - Mobile Optimized */
     .plans-section {
-      padding: 20px 18px;
+      padding: 20px 16px;
     }
     
     .section-title {
       font-size: 16px;
       font-weight: 600;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       color: var(--text-dark);
       display: flex;
       align-items: center;
@@ -99,65 +139,77 @@
       color: var(--primary-color);
     }
     
+    /* Grid layout for better mobile viewing */
     .plans-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
     }
     
+    /* Plan cards optimized for touch */
     .plan-card {
       background: white;
       border-radius: 14px;
       padding: 16px;
-      border: 1px solid var(--border-color);
-      transition: all 0.25s ease;
+      border: 1.5px solid var(--border-color);
+      transition: all 0.2s ease;
       cursor: pointer;
       display: flex;
       align-items: center;
       position: relative;
       overflow: hidden;
+      min-height: 80px;
     }
     
-    .plan-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--hover-shadow);
+    /* Touch feedback */
+    .plan-card:active {
+      transform: scale(0.98);
+    }
+    
+    .plan-card:hover, .plan-card.selected {
       border-color: var(--primary-color);
+      box-shadow: var(--hover-shadow);
     }
     
     .plan-card.highlighted {
-      border: 2px solid var(--primary-color);
-      background: linear-gradient(to right, rgba(99, 102, 241, 0.03), rgba(99, 102, 241, 0.01));
+      border: 2px solid var(--warning-color);
+      background: linear-gradient(to right, rgba(245, 158, 11, 0.03), rgba(245, 158, 11, 0.01));
     }
     
+    /* Plan icon optimized for mobile */
     .plan-icon {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 10px;
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 16px;
       margin-right: 12px;
       flex-shrink: 0;
     }
     
     .plan-details {
       flex: 1;
+      min-width: 0; /* Prevents flex item overflow */
     }
     
     .plan-name {
       font-size: 15px;
       font-weight: 600;
       color: var(--text-dark);
-      margin-bottom: 3px;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     
     .plan-description {
       font-size: 12px;
       color: var(--text-light);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     
     .plan-badge {
@@ -171,68 +223,58 @@
     }
     
     .plan-price {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--primary-dark);
       text-align: right;
       min-width: 70px;
+      flex-shrink: 0;
     }
     
-    .plan-price span {
-      font-size: 12px;
-      color: var(--text-light);
-      font-weight: 500;
-    }
-    
-    /* Buttons */
+    /* Action Buttons - Larger touch targets */
     .action-buttons {
-      padding: 18px;
+      padding: 20px 16px;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
     
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    .btn-primary, .btn-secondary {
       border: none;
-      color: white;
-      padding: 14px;
-      border-radius: 10px;
+      padding: 16px;
+      border-radius: 12px;
       font-weight: 600;
       font-size: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 10px rgba(99, 102, 241, 0.15);
+      gap: 10px;
+      transition: all 0.2s ease;
+      min-height: 52px;
+      cursor: pointer;
+      width: 100%;
     }
     
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(99, 102, 241, 0.25);
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       color: white;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+    }
+    
+    .btn-primary:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
     }
     
     .btn-secondary {
       background-color: white;
-      border: 1px solid var(--border-color);
+      border: 1.5px solid var(--border-color);
       color: var(--text-dark);
-      padding: 14px;
-      border-radius: 10px;
-      font-weight: 500;
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.25s ease;
     }
     
-    .btn-secondary:hover {
+    .btn-secondary:active {
       background-color: var(--secondary-color);
-      border-color: var(--primary-color);
-      color: var(--primary-dark);
+      transform: translateY(2px);
     }
     
     /* Footer */
@@ -251,19 +293,28 @@
       font-weight: 500;
     }
     
-    /* Modal Enhancements */
+    /* Modal optimizations for mobile */
+    .modal-dialog {
+      margin: 12px;
+      max-height: calc(100vh - 24px);
+      overflow-y: auto;
+    }
+    
     .modal-content {
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
       border: none;
-      box-shadow: var(--card-shadow);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
     
     .modal-header {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       color: white;
       border-bottom: none;
-      padding: 18px;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     
     .modal-title {
@@ -271,73 +322,89 @@
       font-size: 17px;
     }
     
-    .btn-close-white {
-      filter: invert(1) brightness(100%);
+    .modal-body {
+      padding: 20px;
+      max-height: 60vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     
+    /* Form controls optimized for mobile */
     .form-control {
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      font-size: 14px;
-      transition: all 0.25s ease;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border-color);
+      font-size: 15px;
+      transition: all 0.2s ease;
+      min-height: 48px;
     }
     
     .form-control:focus {
       border-color: var(--primary-color);
       box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+      outline: none;
     }
     
-    /* Responsive adjustments */
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
-      }
-      
-      .container {
-        max-width: 100%;
-        border-radius: 14px;
-      }
-      
-      .header {
-        padding: 18px 15px;
-      }
-      
-      h1 {
-        font-size: 20px;
-      }
-      
-      .plans-section {
-        padding: 18px 15px;
-      }
-      
-      .plan-card {
-        padding: 14px;
-      }
-      
-      .plan-price {
-        font-size: 20px;
-      }
-      
-      .action-buttons {
-        padding: 16px;
-      }
+    /* Better input groups for mobile */
+    .input-group {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1.5px solid var(--border-color);
     }
     
-    /* Animation for selected plan */
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.015); }
-      100% { transform: scale(1); }
+    .input-group .form-control {
+      border: none;
+      border-radius: 0;
     }
     
-    .plan-card.selected {
-      animation: pulse 0.4s ease;
-      border-color: var(--primary-color);
-      box-shadow: var(--hover-shadow);
+    .input-group .btn {
+      background: var(--secondary-color);
+      border: none;
+      min-width: 50px;
     }
     
-    /* Loading state for buttons */
+    /* Responsive tables */
+    .table-responsive {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    
+    .table {
+      font-size: 12px;
+      margin: 0;
+      width: 100%;
+    }
+    
+    .table th {
+      font-weight: 600;
+      padding: 12px 10px;
+      background: var(--secondary-color);
+      white-space: nowrap;
+    }
+    
+    .table td {
+      padding: 12px 10px;
+      vertical-align: middle;
+    }
+    
+    /* Status badges */
+    .badge {
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    
+    /* Small buttons in tables */
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 11px;
+      border-radius: 8px;
+      min-height: 32px;
+    }
+    
+    /* Loading animations */
     .btn-loading {
       position: relative;
       color: transparent !important;
@@ -346,12 +413,12 @@
     .btn-loading::after {
       content: '';
       position: absolute;
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       top: 50%;
       left: 50%;
-      margin-left: -9px;
-      margin-top: -9px;
+      margin-left: -10px;
+      margin-top: -10px;
       border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       border-top-color: white;
@@ -362,71 +429,123 @@
       to { transform: rotate(360deg); }
     }
     
-    /* Compact form elements */
-    .form-group {
-      margin-bottom: 15px;
+    /* Mobile-specific optimizations */
+    @media (max-width: 576px) {
+      body {
+        padding: 8px;
+        background: var(--secondary-color);
+      }
+      
+      .container {
+        border-radius: 14px;
+      }
+      
+      .header {
+        padding: 18px 14px;
+      }
+      
+      h1 {
+        font-size: 18px;
+      }
+      
+      .plans-section {
+        padding: 18px 14px;
+      }
+      
+      .plan-card {
+        padding: 14px;
+      }
+      
+      .action-buttons {
+        padding: 18px 14px;
+      }
+      
+      .modal-dialog {
+        margin: 8px;
+      }
+      
+      /* Larger touch targets for very small screens */
+      .btn-primary, .btn-secondary {
+        min-height: 56px;
+        padding: 18px;
+      }
+      
+      .form-control {
+        min-height: 52px;
+      }
     }
     
-    .form-label {
-      font-size: 13px;
-      margin-bottom: 5px;
-      display: block;
+    /* Landscape orientation support */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .container {
+        max-width: 600px;
+      }
+      
+      .plans-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .plan-card {
+        min-height: 90px;
+      }
+      
+      .modal-body {
+        max-height: 40vh;
+      }
     }
     
-    .input-group .btn {
-      padding: 10px 12px;
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --secondary-color: #1e293b;
+        --text-dark: #f1f5f9;
+        --text-light: #94a3b8;
+        --border-color: #334155;
+      }
+      
+      body {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      }
+      
+      .container {
+        background-color: #1e293b;
+      }
+      
+      .plan-card {
+        background-color: #1e293b;
+      }
+      
+      .btn-secondary {
+        background-color: #1e293b;
+      }
+      
+      .modal-content {
+        background-color: #1e293b;
+      }
+      
+      .table th {
+        background-color: #0f172a;
+      }
     }
     
-    /* Table improvements */
-    .table {
-      font-size: 12px;
-      margin-bottom: 0;
+    /* Prevent text selection on buttons */
+    .btn-primary, .btn-secondary, .plan-card {
+      user-select: none;
+      -webkit-user-select: none;
     }
     
-    .table th {
-      font-weight: 600;
-      padding: 8px 10px;
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 4px;
     }
     
-    .table td {
-      padding: 8px 10px;
-      vertical-align: middle;
+    ::-webkit-scrollbar-track {
+      background: var(--secondary-color);
     }
     
-    .badge {
-      font-size: 10px;
-      padding: 3px 6px;
-    }
-    
-    .btn-sm {
-      padding: 3px 8px;
-      font-size: 11px;
-    }
-    
-    /* Modal body padding */
-    .modal-body {
-      padding: 18px;
-    }
-    
-    /* Alert in mobile number modal */
-    .alert {
-      padding: 10px 12px;
-      border-radius: 8px;
-      font-size: 13px;
-      margin-bottom: 15px;
-    }
-    
-    .alert i {
-      font-size: 14px;
-    }
-    
-    /* Text adjustments */
-    .text-sm {
-      font-size: 12px;
-    }
-    
-    .text-lg {
-      font-size: 14px;
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 2px;
     }
   </style>
   
@@ -441,14 +560,18 @@
     <!-- Header -->
     <div class="header">
       <h1>Rollz WiFi Ticketing</h1>
-      <p class="subtitle">Fast & Reliable Internet Access</p>
+      <p class="subtitle">High-Speed Internet Access</p>
+      <div class="connection-status">
+        <div class="connection-dot"></div>
+        <span>Ready to Connect</span>
+      </div>
     </div>
         
     <!-- Plans -->
     <div class="plans-section">
       <h2 class="section-title">
-        <i class="fas fa-bolt"></i>
-        Select Your Plan
+        <i class="fas fa-wifi"></i>
+        Choose Your Plan
       </h2>
       
       <div class="plans-grid">
@@ -459,7 +582,7 @@
           </div>
           <div class="plan-details">
             <div class="plan-name">12 Hours</div>
-            <div class="plan-description">Unlimited Internet Access</div>
+            <div class="plan-description">Unlimited high-speed internet</div>
             <span class="plan-badge">Popular</span>
           </div>
           <div class="plan-price">₱10</div>
@@ -468,11 +591,11 @@
         <!-- Plan 2 -->
         <div class="plan-card" data-amount="20">
           <div class="plan-icon">
-            <i class="fas fa-calendar-day"></i>
+            <i class="fas fa-sun"></i>
           </div>
           <div class="plan-details">
             <div class="plan-name">24 Hours</div>
-            <div class="plan-description">Unlimited Internet Access</div>
+            <div class="plan-description">Full day access</div>
           </div>
           <div class="plan-price">₱20</div>
         </div>
@@ -484,7 +607,7 @@
           </div>
           <div class="plan-details">
             <div class="plan-name">7 Days</div>
-            <div class="plan-description">Unlimited Internet Access</div>
+            <div class="plan-description">Weekly unlimited access</div>
             <span class="plan-badge">Best Value</span>
           </div>
           <div class="plan-price">₱120</div>
@@ -497,7 +620,7 @@
           </div>
           <div class="plan-details">
             <div class="plan-name">15 Days</div>
-            <div class="plan-description">Unlimited Internet Access</div>
+            <div class="plan-description">Extended access</div>
           </div>
           <div class="plan-price">₱200</div>
         </div>
@@ -511,15 +634,22 @@
         Proceed to Payment
       </button>
       
+      <button type="button" class="btn-secondary" data-bs-toggle="modal" data-bs-target="#transactions">
+        <i class="fas fa-history"></i>
+        View Previous Transactions
+      </button>
+    </div>
+    
     <!-- Footer -->
     <div class="footer">
-      <p class="mt-1"> All rights reserved © 2026 Rollz WiFi Ticketing</p>
+      <p>Need help? <a href="https://s2.klinternetservices.com/client" target="_blank">Contact Support</a></p>
+      <p class="mt-1">Secure payment via GCash & Maya</p>
     </div>
   </div>
 
   <!-- Transactions Modal -->
   <div class="modal fade" id="transactions" tabindex="-1" aria-labelledby="transactionsLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Retrieve your transactions</h5>
@@ -528,65 +658,73 @@
 
         <div class="modal-body">
           <form id="checkNumberForm">
-            <div class="form-group">
+            <div class="mb-3">
               <input type="text" name="getVouchers" id="getVouchers" value="vouchers" hidden />
               <input type="text" name="getTransactions" id="getTransactions" value="transactions" hidden />
 
-              <label class="text-muted text-sm" for="numberSearch">Mobile number:</label>
-              <input type="tel" name="numberSearch" id="numberSearch" class="form-control text-center text-lg" style="width: 100%; letter-spacing: 2px" placeholder="e.g. 09912346789" pattern="[0]{1}[9]{1}[0-9]{9}" autocomplete="tel" required />
+              <label for="numberSearch" class="form-label">Mobile number</label>
+              <input type="tel" name="numberSearch" id="numberSearch" class="form-control text-center" placeholder="09123456789" pattern="[0]{1}[9]{1}[0-9]{9}" autocomplete="tel" required />
               
-              <label class="text-muted text-sm mt-3" for="key">KLCiS Client API Secret:</label>
+              <label for="key" class="form-label mt-3">KLCiS Client API Secret</label>
               <div class="input-group">
-                <input type="password" name="key" id="key" class="form-control text-center text-lg" placeholder="KLCIS Client API Secret" required />
+                <input type="password" name="key" id="key" class="form-control" placeholder="Enter your API secret" required />
                 <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                   <i class="fas fa-eye"></i>
                 </button>
               </div>
             </div>
 
-            <div class="text-center mt-3">
-              <button type="submit" id="checkVouchers" class="btn btn-success me-2">
-                <i class="fas fa-ticket-alt me-1"></i> View Vouchers
+            <div class="d-grid gap-2">
+              <button type="submit" id="checkVouchers" class="btn btn-success">
+                <i class="fas fa-ticket-alt me-2"></i> View Vouchers
               </button>
               <button type="submit" id="checkTransactions" class="btn btn-primary">
-                <i class="fas fa-receipt me-1"></i> View Transactions
+                <i class="fas fa-receipt me-2"></i> View Transactions
               </button>
             </div>
           </form>
 
-          <p class="text-muted text-sm mb-2 mt-3 text-center">
-            No KLCIS client account? <br />
-            <a class="text-primary text-sm" href="https://s2.klinternetservices.com/client" target="_blank"><strong>CLICK HERE TO SIGN-UP!</strong></a>
+          <p class="text-center text-muted mt-3 mb-2 small">
+            No KLCIS client account?<br>
+            <a href="https://s2.klinternetservices.com/client" target="_blank" class="text-primary">Sign up here</a>
           </p>
 
+          <!-- Vouchers Table -->
           <div id="vouchersTable" style="display: none">
+            <h6 class="mt-4 mb-3">Your Vouchers</h6>
             <div class="table-responsive">
-              <table class="table table-sm table-bordered table-hover">
+              <table class="table table-sm table-hover">
                 <thead class="table-light">
                   <tr>
-                    <th class="text-sm">Date</th>
-                    <th class="text-sm text-center">Voucher</th>
-                    <th class="text-sm text-center">Amount</th>
-                    <th class="text-sm">Transaction Code</th>
+                    <th>Date</th>
+                    <th class="text-center">Voucher</th>
+                    <th class="text-center">Amount</th>
+                    <th>Transaction Code</th>
                   </tr>
                 </thead>
-                <tbody id="vouchersTableBody"></tbody>
+                <tbody id="vouchersTableBody">
+                  <!-- Data will be loaded here -->
+                </tbody>
               </table>
             </div>
           </div>
 
+          <!-- Transactions Table -->
           <div id="transactionTable" style="display: none">
+            <h6 class="mt-4 mb-3">Transaction History</h6>
             <div class="table-responsive">
-              <table class="table table-sm table-bordered table-hover">
+              <table class="table table-sm table-hover">
                 <thead class="table-light">
                   <tr>
-                    <th class="text-sm">Date</th>
-                    <th class="text-sm text-center">Status</th>
-                    <th class="text-sm text-center">Amount</th>
-                    <th class="text-sm text-center">Check Status</th>
+                    <th>Date</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Amount</th>
+                    <th class="text-center">Action</th>
                   </tr>
                 </thead>
-                <tbody id="transactionTableBody"></tbody>
+                <tbody id="transactionTableBody">
+                  <!-- Data will be loaded here -->
+                </tbody>
               </table>
             </div>
           </div>
@@ -600,66 +738,75 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="mobileNumberModalLabel">GCASH | MAYA PAYMENT</h5>
+          <h5 class="modal-title">GCash | Maya Payment</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="text-center mb-3">
-            <div class="plan-icon mx-auto mb-2" style="width: 40px; height: 40px; font-size: 16px;">
+          <div class="text-center mb-4">
+            <div class="plan-icon mx-auto mb-3">
               <i class="fas fa-mobile-alt"></i>
             </div>
-            <p class="text-sm">Enter your GCASH or MAYA mobile number to proceed with payment.</p>
-            <p class="text-muted text-xs">You will receive a payment request on your mobile wallet.</p>
+            <p>Enter your mobile number to receive payment request</p>
+            <p class="text-muted small">We support GCash and Maya wallets</p>
           </div>
           
           <form id="mobileNumberForm">
             <div class="mb-3">
-              <label for="mobileNumber" class="form-label text-sm">Mobile Number</label>
-              <input type="tel" class="form-control text-center" id="mobileNumber" placeholder="09XXXXXXXXX" required>
-              <div class="invalid-feedback text-sm">Please enter a valid Philippine mobile number (09XXXXXXXXX).</div>
+              <label for="mobileNumber" class="form-label">Mobile Number</label>
+              <input type="tel" class="form-control text-center" id="mobileNumber" placeholder="09123456789" required>
+              <div class="invalid-feedback small">Please enter a valid mobile number (09123456789)</div>
             </div>
-            <div class="mb-3">
-              <label class="form-label text-sm">Selected Plan</label>
-              <div class="alert alert-primary d-flex align-items-center py-2" role="alert">
-                <i class="fas fa-wifi me-2"></i>
-                <div class="text-sm">
-                  <strong id="selectedPlanName">12 Hours</strong> - 
-                  <span id="selectedPlanPrice">₱10</span>
+            
+            <div class="mb-4">
+              <label class="form-label">Selected Plan</label>
+              <div class="alert alert-primary d-flex align-items-center py-3" role="alert">
+                <i class="fas fa-wifi me-3"></i>
+                <div>
+                  <div class="fw-bold" id="selectedPlanName">12 Hours</div>
+                  <div class="fs-4 fw-bold text-primary" id="selectedPlanPrice">₱10</div>
                 </div>
               </div>
             </div>
+            
             <input type="hidden" id="amount" name="amount">
             <input type="hidden" id="token-value" name="token" value="I0k5BarwaisPVtWMIVEsushym">
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary btn-sm" id="submitMobileNumber">
-            <i class="fas fa-paper-plane me-1"></i> Send Payment Request
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="submitMobileNumber">
+            <i class="fas fa-paper-plane me-2"></i> Send Payment Request
           </button>
         </div>
       </div>
     </div>
-  </div> 
+  </div>
   
   <script>
-    // Initialize
+    // Initialize on document ready
     $(document).ready(function() {
       // Set default selected plan
       $('.plan-card').first().addClass('selected');
       updateSelectedPlanDisplay();
       
       // Toggle password visibility
-      $('#togglePassword').click(function() {
+      $('#togglePassword').on('click', function() {
         const passwordInput = $('#key');
         const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
         passwordInput.attr('type', type);
         $(this).find('i').toggleClass('fa-eye fa-eye-slash');
       });
+      
+      // Add touch feedback for plan cards
+      $('.plan-card').on('touchstart', function() {
+        $(this).addClass('active');
+      }).on('touchend touchcancel', function() {
+        $(this).removeClass('active');
+      });
     });
     
     // Plan selection
-    $('.plan-card').click(function() {
+    $('.plan-card').on('click', function() {
       $('.plan-card').removeClass('selected');
       $(this).addClass('selected');
       updateSelectedPlanDisplay();
@@ -676,19 +823,19 @@
     }
     
     // Proceed to payment button
-    $('#proceedToPayment').click(function() {
+    $('#proceedToPayment').on('click', function() {
       const selectedCard = $('.plan-card.selected');
       if (selectedCard.length) {
         $('#mobileNumberModal').modal('show');
       } else {
         Swal.fire({
-          icon: 'warning',
+          icon: 'info',
           title: 'Select a Plan',
           text: 'Please select a WiFi plan first.',
-          confirmButtonColor: 'var(--primary-color)',
           confirmButtonText: 'OK',
-          width: 300,
-          padding: '1rem'
+          confirmButtonColor: 'var(--primary-color)',
+          background: 'white',
+          color: 'var(--text-dark)'
         });
       }
     });
@@ -699,17 +846,14 @@
       return regex.test(number);
     }
     
-    function sanitizeInput(input) {
-      return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    }
-    
     // Submit mobile number
-    $('#submitMobileNumber').click(function() {
+    $('#submitMobileNumber').on('click', function() {
       const mobileNumberInput = $('#mobileNumber');
-      const mobileNumber = sanitizeInput(mobileNumberInput.val().trim());
+      const mobileNumber = mobileNumberInput.val().trim();
       
       if (!validateMobileNumber(mobileNumber)) {
         mobileNumberInput.addClass('is-invalid');
+        mobileNumberInput.focus();
         return;
       }
       
@@ -718,7 +862,9 @@
       const token = $('#token-value').val();
       
       // Show loading state
-      $(this).addClass('btn-loading');
+      const $btn = $(this);
+      const originalText = $btn.html();
+      $btn.addClass('btn-loading').prop('disabled', true);
       
       // Simulate API call delay
       setTimeout(() => {
@@ -728,19 +874,18 @@
         Swal.fire({
           icon: 'success',
           title: 'Payment Request Sent',
-          text: 'You will be redirected to complete your payment.',
+          text: 'Redirecting to payment...',
           showConfirmButton: false,
           timer: 1500,
-          width: 300,
-          padding: '1rem'
-        }).then(() => {
-          window.location.href = url;
+          willClose: () => {
+            window.location.href = url;
+          }
         });
       }, 800);
     });
     
     // Form submission for transactions/vouchers
-    $('#checkNumberForm').submit(function(e) {
+    $('#checkNumberForm').on('submit', function(e) {
       e.preventDefault();
       
       const formId = e.submitter ? e.submitter.id : '';
@@ -748,12 +893,12 @@
       const apiKey = $('#key').val().trim();
       
       if (!validateMobileNumber(mobileNumber)) {
-        $('#numberSearch').addClass('is-invalid');
+        $('#numberSearch').addClass('is-invalid').focus();
         return;
       }
       
       if (!apiKey) {
-        $('#key').addClass('is-invalid');
+        $('#key').addClass('is-invalid').focus();
         return;
       }
       
@@ -763,11 +908,11 @@
       // Show loading state on the clicked button
       const $clickedButton = $('#' + formId);
       const originalText = $clickedButton.html();
-      $clickedButton.addClass('btn-loading');
+      $clickedButton.addClass('btn-loading').prop('disabled', true);
       
       // Simulate API call
       setTimeout(() => {
-        $clickedButton.removeClass('btn-loading');
+        $clickedButton.removeClass('btn-loading').prop('disabled', false);
         $clickedButton.html(originalText);
         
         if (formId === 'checkVouchers') {
@@ -786,14 +931,20 @@
             tableBody += `
               <tr>
                 <td>${item.date}</td>
-                <td class="text-center">${item.voucher}</td>
-                <td class="text-center">${item.amount}</td>
-                <td>${item.code}</td>
+                <td class="text-center"><span class="badge bg-info">${item.voucher}</span></td>
+                <td class="text-center fw-bold">${item.amount}</td>
+                <td><code>${item.code}</code></td>
               </tr>
             `;
           });
           
           $('#vouchersTableBody').html(tableBody);
+          
+          // Scroll to table
+          $('.modal-body').animate({
+            scrollTop: $('#vouchersTable').offset().top - 20
+          }, 300);
+          
         } else if (formId === 'checkTransactions') {
           // Show transactions table with sample data
           $('#transactionTable').show();
@@ -807,18 +958,23 @@
           
           let tableBody = '';
           sampleData.forEach(item => {
-            const statusClass = item.status === 'Completed' ? 'badge bg-success' : 'badge bg-warning';
+            const statusClass = item.status === 'Completed' ? 'bg-success' : 'bg-warning';
             tableBody += `
               <tr>
                 <td>${item.date}</td>
-                <td class="text-center"><span class="${statusClass}">${item.status}</span></td>
-                <td class="text-center">${item.amount}</td>
+                <td class="text-center"><span class="badge ${statusClass}">${item.status}</span></td>
+                <td class="text-center fw-bold">${item.amount}</td>
                 <td class="text-center"><button class="btn btn-sm btn-outline-primary">${item.check}</button></td>
               </tr>
             `;
           });
           
           $('#transactionTableBody').html(tableBody);
+          
+          // Scroll to table
+          $('.modal-body').animate({
+            scrollTop: $('#transactionTable').offset().top - 20
+          }, 300);
         }
       }, 1200);
     });
@@ -833,7 +989,16 @@
     $('#mobileNumberModal').on('hidden.bs.modal', function() {
       $('#mobileNumberForm')[0].reset();
       $('#mobileNumber').removeClass('is-invalid');
-      $('#submitMobileNumber').removeClass('btn-loading');
+      $('#submitMobileNumber').removeClass('btn-loading').prop('disabled', false);
+    });
+    
+    // Handle orientation change
+    let timeout;
+    window.addEventListener('orientationchange', function() {
+      clearTimeout(timeout);
+      timeout = setTimeout(function() {
+        window.location.reload();
+      }, 300);
     });
   </script>
 </body>
